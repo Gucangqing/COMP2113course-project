@@ -22,4 +22,13 @@ If the knight loses all his HP on his way, the player loses the game.
 If the knight is still alive after beating the dragon and answer the princess's question correctly, the player wins the game.
 
 3. Features
+Our game will be a text-based adventure game. The player can tell his or her current situations through texts and make several actions to reach their final goal.
+This game will be a PvE game with player and NPC take turns to fight.
+A.Player's situation and actions generating
+  The function will be able to calculate and store the current situations of the player. For example, for the HP of the player, every actions he made will possible affect his HP. Regarding different action commands, we'll call different calculation function to increase or decrease or do no change to the player's HP, and returned the new value to the main memory.
+The player will also be provided with a list of actions he could do when he call's out either the main menu or fighting menu and so on. Different action commands will lead to several funtions to achieve different goals.
+B.Game NPC's situation and actions generating
+  Each Game NPC will have his or her own list of functions and attributes. For example during the fight with the player, we'll provide a list of actions the NPC can do and randomly generating actions from their list. 
+
+
 
