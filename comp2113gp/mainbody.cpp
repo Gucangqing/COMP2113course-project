@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <random>
+#include <vector>
 using namespace std;
 //roll generator
 int roll(int n1,int n2){
@@ -16,7 +17,9 @@ bool checkinitdist(int HP,int AP,int initpoints,bool &initdist){
         return false;
     }
 }
-
+add_skills(vector<attack> skills,int AP){
+    
+}
 //----story backgroud description
 int main(){
     string name;
@@ -50,11 +53,12 @@ int main(){
         }
         // input distribution points
         cout<<endl;
-        cout<<"Please input your distribution for HP and AP (Two inegers seperated by space):"<<endl;
+        cout<<"Please input your distribution points for HP and AP (Two inegers seperated by space):"<<endl;
         cin>>HP>>AP;
         bool initdist=false;
         initdist=checkinitdist(HP,AP,initpoints,initdist);
         if(initdist==true){
+            HP=HP*10;
             cout<<"Successful distribution!"<<endl;
             cout<<"Your HP is: "<<HP<<endl;
             cout<<"Your AP is: "<<AP<<endl;
@@ -63,10 +67,18 @@ int main(){
             initdist=checkinitdist(HP,AP,initpoints,initdist);
             if (initdist!=true){
                 cout<<"Unsuccessful distribution."<<endl;
-                cout<<"Please input your distribution for HP and AP (Two inegers seperated by space):"<<endl;
+                cout<<endl;
+                cout<<"Rules:"<<endl;
+                cout<<"For your initial points, you can distribute them to your HP(Health Points) or AP(Attack Points)"<<endl;
+                cout<<"Initial points for HP and AP should be integers between 1 and 5."<<endl;
+                cout<<"You must distribute all your initial points and cannot exceed."<<endl;
+                cout<<"For each game, you only have one distribute chance for your initial points, be clever."<<endl;
+                cout<<endl;
+                cout<<"Please input your distribution points for HP and AP (Two inegers seperated by space):"<<endl;
                 cin>>HP>>AP;
             }
             else{
+                HP=HP*10;
                 cout<<"Successful distribution!"<<endl;
                 cout<<"Your HP is: "<<HP<<endl;
                 cout<<"Your AP is: "<<AP<<endl;
@@ -74,7 +86,9 @@ int main(){
             
         }
         //roll for random gift
+        int gift=0;
         if (initdist==true){
+            cout<<endl;
             cout<<"The goddess is offering you a gift from the three gifts below:"<<endl;
             cout<<"Extra points for HP and AP."<<endl;
             cout<<"A sheild that can save you once."<<endl;
@@ -85,24 +99,35 @@ int main(){
             if(input=="yes"){
                 int gift=roll(1,6);
                 if (gift==1||gift==2||gift==3){
+                    gift=1;
                     cout<<"Your gift is extra 2 points for HP and extra 1 point for AP."<<endl;
-                    HP=HP+2;
+                    HP=HP+20;
                     AP=AP+1;
                     cout<<"Your HP is: "<<HP<<endl;
                     cout<<"Your AP is: "<<AP<<endl;
                 }
                 else if(gift==4||gift==5){
+                    gift=2;
                     cout<<"You gift is one sheild for the boss's final attack."<<endl;
                 }
                 else if(gift==6){
+                    gift=3;
                     cout<<"Your gift is an extra life."<<endl;
                 }
             }
             if(input=="no"){
+                gift=0;
                 cout<<"You choose to start your journey without a gift, good luck."<<endl;
             }
         }
         
+        //define all attack methdd
+        struct attack{
+            attack_name;
+            attack_hurt;
+        };
+        vector<attack>skills;
+        add_skills(skills,AP);
         
     }
     else{
