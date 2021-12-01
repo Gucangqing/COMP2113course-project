@@ -8,6 +8,7 @@ using namespace std;
 //----story backgroud description
 int main(){
     string name;
+    int Sheild=0,life=1;
     cout<<"Please name your hero:";
     cin>>name;
     cout<<"Dear "<<name<<", Welcome to Magic Kingdom!"<<endl;
@@ -93,12 +94,14 @@ int main(){
                 }
                 else if(gift==4||gift==5){
                     gift=2;
+		    Sheild=1;
                     cout<<"You gift is one sheild for the boss's final attack."<<endl;
                 }
                 else if(gift==6){
                     gift=3;
                     cout<<"Your gift is an extra life."<<endl;
-                }
+                    life=2;
+		}
             }
             if(input=="no"){
                 gift=0;
