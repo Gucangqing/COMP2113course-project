@@ -121,13 +121,50 @@ int main(){
             }
         }
         
-        //define all attack methdd
-        struct attack{
-            attack_name;
-            attack_hurt;
+        //define all attack methods
+        struct attackskills{
+            string attack_name;
+            int attack_hurt;
+            int recover;
         };
-        vector<attack>skills;
-        add_skills(skills,AP);
+        struct Critter{
+            string attack_name;
+            int attack_hurt;
+        };
+        //skills of Protagonist
+        attackskills Protagonist[8]={
+            {"Smite", 10, 0},
+            {"Stone", 12, 0},
+            {"Strike", 14, 0},
+            {"Spear", 16, 0},
+            {"Dagger", 18, 0},
+            {"Knife", 20, 5},
+            {"Sword", 22, 10},
+            {"Shot", 30, 20}
+        };
+        //skills of Antagonist
+        Critter Critter1[2]={
+            {"Spark", 8},
+            {"Flame", 12}
+        };
+        Critter Critter2[3]={
+            {"Spark", 8},
+            {"Flame", 12},
+            {"Flare", 16}
+        };
+        Critter Dragon[4]={
+            {"Spark", 8},
+            {"Flame", 12},
+            {"Flare", 16},
+            {"Blast", 30}
+        };
+        cin >> AP;
+        attackskills Attack[8];
+        for (int i=0; i<AP; i++){
+            Attack[i].attack_name = Protagonist[i].attack_name;
+            Attack[i].attack_hurt = Protagonist[i].attack_hurt;
+            Attack[i].recover = Protagonist[i].recover;
+        }
         
     }
     else{
