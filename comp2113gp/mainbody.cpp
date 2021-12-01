@@ -2,6 +2,7 @@
 #include <string>
 #include <random>
 #include <vector>
+#include "function.h"
 using namespace std;
 //roll generator
 int roll(int n1,int n2){
