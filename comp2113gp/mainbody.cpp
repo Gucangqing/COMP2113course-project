@@ -4,23 +4,7 @@
 #include <vector>
 #include "function.h"
 using namespace std;
-//roll generator
-int roll(int n1,int n2){
-    srand(time(0));
-    return rand() % (n2-n1+1) +n1; 
-    
-}
-bool checkinitdist(int HP,int AP,int initpoints,bool &initdist){
-    if(HP>=1&&HP<=5&&AP>=1&&AP<=5&&HP+AP==initpoints){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
-add_skills(vector<attack> skills,int AP){
-    
-}
+
 //----story backgroud description
 int main(){
     string name;
