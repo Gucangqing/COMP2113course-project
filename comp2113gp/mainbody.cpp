@@ -5,30 +5,69 @@
 #include "function.h"
 using namespace std;
 
+//struct of the Protagonist's and Antagonist's skills
+struct attackskills{
+    string attack_name;
+    int attack_hurt;
+    int recover;
+};
+struct Critter{
+    string attack_name;
+    int attack_hurt;
+};
+
 //----story backgroud description
 int main(){
     string name;
-    int Sheild=0,life=1;
-    cout<<"Please name your hero:";
+    int HP, AP, Sheild=0, life=1;
+    attackskills Attack[8];
+    //skills of Protagonist
+    attackskills Protagonist[9]={
+        {"Smite", 10, 0},
+        {"Stone", 12, 0},
+        {"Strike", 14, 0},
+        {"Spear", 16, 0},
+        {"Dagger", 18, 0},
+        {"Knife", 20, 5},
+        {"Sword", 22, 10},
+        {"Shot", 30, 20},
+        {"Bomb", 40, 30}
+    };
+    //skills of Antagonists
+    Critter Critter1[2]={
+        {"Spark", 8},
+        {"Flame", 12}
+    };
+    Critter Critter2[3]={
+        {"Spark", 8},
+        {"Flame", 12},
+        {"Flare", 16}
+    };
+    Critter Dragon[4]={
+        {"Spark", 8},
+        {"Flame", 12},
+        {"Flare", 16},
+        {"Blast", 30}
+    };
+    cout<<"Please name your hero: ";
     cin>>name;
     cout<<"Dear "<<name<<", Welcome to Magic Kingdom!"<<endl;
     cout<<"Magic Kingdom used to be a peaceful place..."<<endl;
     cout<<"Until one day, the dragon came."<<endl;
     cout<<"The dragon only loves two things: Shining Jewels and Beautiful Girls."<<endl;
-    cout<<"After looting the kingdom's jewels, the dragon robbed th most precious property of the magic kingdom----the king's one and only daughte, princess Cici."<<endl;
+    cout<<"After looting the kingdom's jewels, the dragon robbed th most precious property of the magic kingdom----the king's one and only daughter, princess Cici."<<endl;
     cout<<"The King has announced that whoever can beat the dragon and save the princess can inherit his place and merry Cici."<<endl;
     cout<<"You are a young man who are eager to become someone, so you decided to take this great path."<<endl;
     cout<<endl;
-    cout<<"Do you want to start your journey?(yes/no)"<<endl;
+    cout<<"Do you want to start your journey? (yes/no)"<<endl;
     string input;
     cin>>input;
     if(input=="yes"){
-        int HP,AP;
         //roll for initial points;
         int initpoints=roll(7,10);
         cout<<"You have "<<initpoints<<" initial points to distribute."<<endl;
         cout<<endl;
-        cout<<"Do you want to read the distribution rule?(yes/no)"<<endl;
+        cout<<"Do you want to read the distribution rule? (yes/no)"<<endl;
         cin>>input;
         //distribution rules
         if(input=="yes"){
@@ -108,46 +147,8 @@ int main(){
                 cout<<"You choose to start your journey without a gift, good luck."<<endl;
             }
         }
-        
-        //define all attack methods
-        struct attackskills{
-            string attack_name;
-            int attack_hurt;
-            int recover;
-        };
-        struct Critter{
-            string attack_name;
-            int attack_hurt;
-        };
-        //skills of Protagonist
-        attackskills Protagonist[9]={
-            {"Smite", 10, 0},
-            {"Stone", 12, 0},
-            {"Strike", 14, 0},
-            {"Spear", 16, 0},
-            {"Dagger", 18, 0},
-            {"Knife", 20, 5},
-            {"Sword", 22, 10},
-            {"Shot", 30, 20},
-            {"Bomb", 40, 30}
-        };
-        //skills of Antagonist
-        Critter Critter1[2]={
-            {"Spark", 8},
-            {"Flame", 12}
-        };
-        Critter Critter2[3]={
-            {"Spark", 8},
-            {"Flame", 12},
-            {"Flare", 16}
-        };
-        Critter Dragon[4]={
-            {"Spark", 8},
-            {"Flame", 12},
-            {"Flare", 16},
-            {"Blast", 30}
-        };
-        attackskills Attack[8];
+	    
+        //Add attack skills for the protagonist
         for (int i=0; i<AP; i++){
             Attack[i].attack_name = Protagonist[i].attack_name;
             Attack[i].attack_hurt = Protagonist[i].attack_hurt;
@@ -159,7 +160,40 @@ int main(){
         cout<<"You lost the chance!"<<endl;
     }
     
-   
+   //Start the fight with the Critters
+   cout << "On the way to the Dragon's castle, there are some little critters." << endl;
+   cout << "They are the minions of the Dragon, preventing the challengers from getting to the castle." << endl;
+   cout << "You have to beat all of them to get to the castle and fight with the Dragon." << endl;
+   cout << "The way you play your card is by a random roll." << endl;
+   cout << "Now you are facing the first little critter, its HP is 30." << endl;
+   cout << "Good luck!" << endl;
+   cout << endl;
+   //Cristter1
+   int Critter1HP = 30;
+   int winner;
+   while (HP>=0 && Critter1HP>=0){
+     int YourAtt = roll(0, AP-1);
+     cout << "You play your card: " << Attack[YourAtt].attack_name << endl;
+     Critter1HP -= Attack[YourAtt].attack_hurt;
+     if (Critter1HP <= 0) break;
+     cout << "The Critter's HP is: " << Critter1HP << endl;
+     int CritterAtt = roll(1, 6);
+     if (CritterAtt <= 4){
+       cout << "The Critter play the card: " << Critter1[0].attack_name << endl;
+       HP -= Critter1[0].attack_hurt;
+    }
+    else{
+      cout << "The Critter play the card: " << Critter1[1].attack_name << endl;
+      HP -= Critter1[1].attack_hurt;
+    }
+    cout << "Your HP is: " << HP << endl;
+   }
+   if (Critter1HP <= 0){
+     cout << "Congratulations, you beat the first Critter!" << endl;
+   } 
+   else if (HP <= 0){
+     cout << "Unfortunately, you lose the first battle." << endl;
+   }
 }
 
 
