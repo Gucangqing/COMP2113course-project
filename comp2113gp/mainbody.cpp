@@ -117,7 +117,7 @@ int main(){
             int attack_hurt;
         };
         //skills of Protagonist
-        attackskills Protagonist[8]={
+        attackskills Protagonist[9]={
             {"Smite", 10, 0},
             {"Stone", 12, 0},
             {"Strike", 14, 0},

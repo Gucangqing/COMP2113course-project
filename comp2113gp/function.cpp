@@ -6,7 +6,7 @@ using namespace std;
 
 //random number generator to roll skill points
 int roll(int n1, int n2){
-  srand(tinme(0));
+  srand(time(0));
   return rand() % (n2-n1+1) + n1;
 }
 
