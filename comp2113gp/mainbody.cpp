@@ -125,7 +125,8 @@ int main(){
             {"Dagger", 18, 0},
             {"Knife", 20, 5},
             {"Sword", 22, 10},
-            {"Shot", 30, 20}
+            {"Shot", 30, 20},
+            {"Bomb", 40, 30}
         };
         //skills of Antagonist
         Critter Critter1[2]={
@@ -143,7 +144,6 @@ int main(){
             {"Flare", 16},
             {"Blast", 30}
         };
-        cin >> AP;
         attackskills Attack[8];
         for (int i=0; i<AP; i++){
             Attack[i].attack_name = Protagonist[i].attack_name;
