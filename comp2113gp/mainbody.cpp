@@ -188,7 +188,7 @@ int main(){
     int Life=life;
     while(true){
         int YourAtt=roll(0,AP-1);
-        cout<<"You played the skill:"<<Attack[YourAtt].attack_name<<endl;
+        cout<<"You played the skill: "<<Attack[YourAtt].attack_name<<endl;
         Critter1HP-=Attack[YourAtt].attack_hurt;
         if(Critter1HP<=0){
             cout<<"Congratulations! You've beaten the first Critter!"<<endl;
@@ -196,6 +196,7 @@ int main(){
             break;
         }
         cout<<"The Critter's HP is: "<<Critter1HP<<endl;
+	cout << "Press Enter to continue the battle." << endl;
         cin.ignore();
         int CritterAtt=roll(1,6);
         if(CritterAtt<=4){
@@ -220,7 +221,7 @@ int main(){
                 }
             }
             cout<<"Your HP is: "<<HP<<endl;
-            
+            cout << "Press Enter to continue the battle." << endl;
             cin.get();
         }
         else if(CritterAtt>4){
@@ -243,7 +244,7 @@ int main(){
                 }
             } 
             cout<<"Your HP is: "<<HP<<endl;
-            
+            cout << "Press Enter to continue the battle." << endl;
             cin.get();
         } 
     }
@@ -284,6 +285,11 @@ int main(){
     cin.get();
     //Cristter2
     HP=hp*10;
+    for (int i=0; i<AP; i++){
+        Attack[i].attack_name = Protagonist[i].attack_name;
+        Attack[i].attack_hurt = Protagonist[i].attack_hurt;
+        Attack[i].recover = Protagonist[i].recover;
+    }
     int Critter2HP = HP+10;
     cout<<"You can keep your journey now."<<endl;
     cout<<"After passing the first Critter, you walked into a dark forest."<<endl;
@@ -292,11 +298,11 @@ int main(){
     cout<<"The Critter's HP is "<<Critter2HP<<"."<<endl;
     cout<<"Good luck."<<endl;
     cout<<endl;
-    cout<<"Press Enter to start the battle.";
+    cout<<"Press Enter to start the battle."<<endl;
     cin.ignore();
     while(true){
         int YourAtt=roll(0,AP-1);
-        cout<<"You played the skill:"<<Attack[YourAtt].attack_name<<endl;
+        cout<<"You played the skill: "<<Attack[YourAtt].attack_name<<endl;
         Critter2HP-=Attack[YourAtt].attack_hurt;
         HP+=Attack[YourAtt].recover;
         if(Critter2HP<=0){
@@ -305,6 +311,7 @@ int main(){
             break; 
         }
         cout<<"The Critter's HP is: "<<Critter2HP<<endl;
+	cout << "Press Enter to continue the battle." << endl;
         cin.get();
         int CritterAtt=roll(1,6);
         if(CritterAtt<=3){
@@ -331,6 +338,7 @@ int main(){
                 }
             }
             cout<<"Your HP is: "<<HP<<endl;
+	    cout << "Press Enter to continue the battle." << endl;
             cin.get();
         }
         else if(CritterAtt>=4&&CritterAtt<=5){
@@ -353,6 +361,7 @@ int main(){
                 }
             } 
             cout<<"Your HP is: "<<HP<<endl;
+	    cout << "Press Enter to continue the battle." << endl;
             cin.get();
         }
         else if(CritterAtt==6){
@@ -375,6 +384,7 @@ int main(){
                 }
             } 
             cout<<"Your HP is: "<<HP<<endl;
+	    cout << "Press Enter to continue the battle." << endl;
             cin.get();
         }
     }
@@ -407,16 +417,28 @@ int main(){
         
     }
     }
+    cout<<endl;
+    cout<<"Press Enter to continue."<<endl;
+    cin.ignore();
+    cin.get();
     // Battle with dragon
     cout<<"Young hero, now you are fully prepared for all the possible challenges. What waiting in front of you is the vicious dragon."<<endl;
     cout<<"Only after beaten the dragon can you save Princess Cici and become what you've always dreamed to be."<<endl;
     cout<<"But all the heroes who tried to beat the dragon failed."<<endl;
     cout<<"Waiting in front of you is unknown."<<endl;
+    HP=hp*10;
+    for (int i=0; i<AP; i++){
+        Attack[i].attack_name = Protagonist[i].attack_name;
+        Attack[i].attack_hurt = Protagonist[i].attack_hurt;
+        Attack[i].recover = Protagonist[i].recover;
+    }
     int dragonlife=2,dragonHP=HP+20;
     cout<<endl;
+    cout << "The Dragon's HP is "<< dragonHP<< endl;
     cout<<"If you are ready, press Enter to start the battle."<<endl;
-    cin.get();
-    while true{
+    cout << endl;
+    cin.ignore();
+    while (true){
         int YourAtt=roll(0,AP-1);
         cout<<"You played the skill:"<<Attack[YourAtt].attack_name<<endl;
         dragonHP-=Attack[YourAtt].attack_hurt;
@@ -442,7 +464,111 @@ int main(){
             D=true;
             break; 
         }
-        
+        cout<<"The Dragon's HP is: "<<dragonHP<<endl;
+        cout << "Press Enter to continue the battle." << endl;
+        cin.ignore();
+        int DragonAtt=roll(1,8);
+	if(DragonAtt<=3){
+            cout<<"The Dragon played the skill: "<<Dragon[0].attack_name<<endl;
+            HP-=Dragon[0].attack_hurt;
+            if(HP<=0&&Life==2){
+                cout<<"You died."<<endl;
+                cout<<"Fortunately, you have another chance. Now get up and keep fighting!"<<endl;
+                Life=Life-1;
+                HP=hp*10;
+            }
+	    else if(HP<=0&&Life==1){
+                cout<<"Unfortunately, you've lost all your chance. Do you want to replay this round?(yes/no)"<<endl;
+                cout<<endl;
+                cin>>input;
+                if(input=="yes"){
+                    HP=hp*10;
+                    Life=life;
+                }
+               else{
+                    break;
+                }
+            }
+            cout<<"Your HP is: "<<HP<<endl;
+            cout << "Press Enter to continue the battle." << endl;
+            cin.get();
+	}
+	if(DragonAtt>=4 && DragonAtt<=5){
+            cout<<"The Dragon played the skill: "<<Dragon[1].attack_name<<endl;
+            HP-=Dragon[1].attack_hurt;
+            if(HP<=0&&Life==2){
+                cout<<"You died."<<endl;
+                cout<<"Fortunately, you have another chance. Now get up and keep fighting!"<<endl;
+                Life=Life-1;
+                HP=hp*10;
+            }
+	    else if(HP<=0&&Life==1){
+                cout<<"Unfortunately, you've lost all your chance. Do you want to replay this round?(yes/no)"<<endl;
+                cout<<endl;
+                cin>>input;
+                if(input=="yes"){
+                    HP=hp*10;
+                    Life=life;
+                }
+               else{
+                    break;
+                }
+            }
+            cout<<"Your HP is: "<<HP<<endl;
+            cout << "Press Enter to continue the battle." << endl;
+            cin.get();
+	}
+	if(DragonAtt>=6 && DragonAtt<=7){
+            cout<<"The Dragon played the skill: "<<Dragon[2].attack_name<<endl;
+            HP-=Dragon[2].attack_hurt;
+            if(HP<=0&&Life==2){
+                cout<<"You died."<<endl;
+                cout<<"Fortunately, you have another chance. Now get up and keep fighting!"<<endl;
+                Life=Life-1;
+                HP=hp*10;
+            }
+	    else if(HP<=0&&Life==1){
+                cout<<"Unfortunately, you've lost all your chance. Do you want to replay this round?(yes/no)"<<endl;
+                cout<<endl;
+                cin>>input;
+                if(input=="yes"){
+                    HP=hp*10;
+                    Life=life;
+                }
+               else{
+                    break;
+                }
+            }
+            cout<<"Your HP is: "<<HP<<endl;
+            cout << "Press Enter to continue the battle." << endl;
+            cin.get();
+	}
+	if(DragonAtt==8){
+            cout<<"The Dragon played the skill: "<<Dragon[3].attack_name<<endl;
+            HP-=Dragon[3].attack_hurt;
+            if(HP<=0&&Life==2){
+                cout<<"You died."<<endl;
+                cout<<"Fortunately, you have another chance. Now get up and keep fighting!"<<endl;
+                Life=Life-1;
+                HP=hp*10;
+            }
+	    else if(HP<=0&&Life==1){
+                cout<<"Unfortunately, you've lost all your chance. Do you want to replay this round?(yes/no)"<<endl;
+                cout<<endl;
+                cin>>input;
+                if(input=="yes"){
+                    HP=hp*10;
+                    Life=life;
+                }
+               else{
+                    break;
+                }
+            }
+            cout<<"Your HP is: "<<HP<<endl;
+            cout << "Press Enter to continue the battle." << endl;
+            cin.get();
+	}
+
     }
 }
 
