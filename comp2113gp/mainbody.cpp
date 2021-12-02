@@ -3,6 +3,7 @@
 #include <random>
 #include <vector>
 #include "function.h"
+#include <limits>
 using namespace std;
 
 //struct of the Protagonist's and Antagonist's skills
@@ -19,8 +20,10 @@ struct Critter{
 //----story backgroud description
 int main(){
     string name;
-    int HP, AP, Sheild=0, life=1;
+    int hp,HP, AP, Sheild=0, life=1;
+    bool C1=false,C2=false,D=false;
     attackskills Attack[8];
+    
     //skills of Protagonist
     attackskills Protagonist[9]={
         {"Smite", 10, 0},
@@ -79,17 +82,17 @@ int main(){
         // input distribution points
         cout<<endl;
         cout<<"Please input your distribution points for HP and AP (Two inegers seperated by space):"<<endl;
-        cin>>HP>>AP;
+        cin>>hp>>AP;
         bool initdist=false;
-        initdist=checkinitdist(HP,AP,initpoints,initdist);
+        initdist=checkinitdist(hp,AP,initpoints,initdist);
         if(initdist==true){
-            HP=HP*10;
+            HP=hp*10;
             cout<<"Successful distribution!"<<endl;
             cout<<"Your HP is: "<<HP<<endl;
             cout<<"Your AP is: "<<AP<<endl;
         }
         while(initdist!=true){
-            initdist=checkinitdist(HP,AP,initpoints,initdist);
+            initdist=checkinitdist(hp,AP,initpoints,initdist);
             if (initdist!=true){
                 cout<<"Unsuccessful distribution."<<endl;
                 cout<<endl;
@@ -103,7 +106,7 @@ int main(){
                 cin>>HP>>AP;
             }
             else{
-                HP=HP*10;
+                HP=hp*10;
                 cout<<"Successful distribution!"<<endl;
                 cout<<"Your HP is: "<<HP<<endl;
                 cout<<"Your AP is: "<<AP<<endl;
@@ -126,14 +129,15 @@ int main(){
                 if (gift==1||gift==2||gift==3){
                     gift=1;
                     cout<<"Your gift is extra 2 points for HP and extra 1 point for AP."<<endl;
-                    HP=HP+20;
+                    hp=hp+2;
+                    HP=hp*10;
                     AP=AP+1;
                     cout<<"Your HP is: "<<HP<<endl;
                     cout<<"Your AP is: "<<AP<<endl;
                 }
                 else if(gift==4||gift==5){
                     gift=2;
-		    Sheild=1;
+		            Sheild=1;
                     cout<<"You gift is one sheild for the boss's final attack."<<endl;
                 }
                 else if(gift==6){
@@ -147,53 +151,97 @@ int main(){
                 cout<<"You choose to start your journey without a gift, good luck."<<endl;
             }
         }
-	    
+	    cout<<endl;
+    }
+    else{
+        cout<<"You lost the chance!"<<endl;
+        exit(0);
+    }
         //Add attack skills for the protagonist
         for (int i=0; i<AP; i++){
             Attack[i].attack_name = Protagonist[i].attack_name;
             Attack[i].attack_hurt = Protagonist[i].attack_hurt;
             Attack[i].recover = Protagonist[i].recover;
         }
-        
-    }
-    else{
-        cout<<"You lost the chance!"<<endl;
-    }
+    cout<<"Press Enter to continue."<<endl;
+    
+    cin.ignore();
+    cin.get();
     
    //Start the fight with the Critters
-   cout << "On the way to the Dragon's castle, there are some little critters." << endl;
-   cout << "They are the minions of the Dragon, preventing the challengers from getting to the castle." << endl;
-   cout << "You have to beat all of them to get to the castle and fight with the Dragon." << endl;
-   cout << "The way you play your card is by a random roll." << endl;
-   cout << "Now you are facing the first little critter, its HP is 30." << endl;
-   cout << "Good luck!" << endl;
-   cout << endl;
-   //Cristter1
-   int Critter1HP = 30;
-   int winner;
-   while (HP>=0 && Critter1HP>=0){
-     int YourAtt = roll(0, AP-1);
-     cout << "You play your card: " << Attack[YourAtt].attack_name << endl;
-     Critter1HP -= Attack[YourAtt].attack_hurt;
-     if (Critter1HP <= 0) break;
-     cout << "The Critter's HP is: " << Critter1HP << endl;
-     int CritterAtt = roll(1, 6);
-     if (CritterAtt <= 4){
-       cout << "The Critter play the card: " << Critter1[0].attack_name << endl;
-       HP -= Critter1[0].attack_hurt;
+    cout << endl;
+    cout << "On the way to the Dragon's castle, there are some little critters." << endl;
+    cout << "They are the minions of the Dragon, preventing the challengers from getting to the castle." << endl;
+    cout << "You have to beat all of them to get to the castle and fight with the Dragon." << endl;
+    cout << "The way you play your card is by a random roll." << endl;
+    cout << endl;
+    cout << "Now you are facing the first little critter, its HP is 30." << endl;
+    cout << "Good luck!" << endl;
+    cout << endl;
+    cout << "Press Enter to continue."<<endl;
+    
+    cin.get();
+    
+    //Cristter1
+    int Critter1HP = 180;
+    int winner;
+    int Life=life;
+    while(true){
+        int YourAtt=roll(0,AP-1);
+        cout<<"You played the skill:"<<Attack[YourAtt].attack_name<<endl;
+        Critter1HP-=Attack[YourAtt].attack_hurt;
+        if(Critter1HP<=0){
+            cout<<"Congratulations! You've beaten the first Critter!";
+            C1=true;
+            break;
+        }
+        cout<<"The Critter's HP is: "<<Critter1HP<<endl;
+        int CritterAtt=roll(1,6);
+        if(CritterAtt<=4){
+            cout<<"The Critter played the skill: "<<Critter1[0].attack_name<<endl;
+            HP-=Critter1[0].attack_hurt;
+            if(HP<=0&&Life==2){
+                cout<<"You died."<<endl;
+                cout<<"Fortunately, you have another chance. Now get up and keep fighting!";
+                Life=Life-1;
+                HP=hp*10;
+            }
+            else if(HP<=0&&Life==1){
+                cout<<"Unfortunately, you've lost all your chance. Do you want to replay this round?(yes/no)";
+                cout<<endl;
+                cin>>input;
+                if(input=="yes"){
+                    HP=hp*10;
+                    Life=life;
+                }
+               else{
+                    break;
+                }
+            }
+            cout<<"Your HP is: "<<HP<<endl;
+        }
+        else if(CritterAtt>4){
+             cout<<"The Critter played the skill: "<<Critter1[1].attack_name<<endl;
+           HP-=Critter1[1].attack_hurt;
+            if(HP<=0&&Life==2){
+                cout<<"Fortunately, you have another chance. Now get up and keep fighting!";
+                Life=Life-1;
+                HP=hp*10;
+            }
+            else if(HP<=0&&Life==1){
+                cout<<"Unfortunately, you've lost all your chance. Do you want to replay this round?(yes/no)";
+                cin>>input;
+                if(input=="yes"){
+                    HP=hp*10;
+                    Life=life;
+                }
+                else{
+                    break;
+                }
+            } 
+            cout<<"Your HP is: "<<HP<<endl;
+        } 
     }
-    else{
-      cout << "The Critter play the card: " << Critter1[1].attack_name << endl;
-      HP -= Critter1[1].attack_hurt;
-    }
-    cout << "Your HP is: " << HP << endl;
-   }
-   if (Critter1HP <= 0){
-     cout << "Congratulations, you beat the first Critter!" << endl;
-   } 
-   else if (HP <= 0){
-     cout << "Unfortunately, you lose the first battle." << endl;
-   }
 }
 
 
