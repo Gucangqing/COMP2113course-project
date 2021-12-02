@@ -214,6 +214,7 @@ int main(){
                 cin>>input;
                 if(input=="yes"){
                     HP=hp*10;
+		    Critter1HP = HP-5;
                     Life=life;
                 }
                else{
@@ -237,6 +238,7 @@ int main(){
                 cin>>input;
                 if(input=="yes"){
                     HP=hp*10;
+		    Critter1HP = HP-5;
                     Life=life;
                 }
                 else{
@@ -331,6 +333,7 @@ int main(){
                 cin>>input;
                 if(input=="yes"){
                     HP=hp*10;
+		    Critter2HP = HP+10;
                     Life=life;
                 }
                else{
@@ -354,6 +357,7 @@ int main(){
                 cin>>input;
                 if(input=="yes"){
                     HP=hp*10;
+		    Critter2HP = HP+10;
                     Life=life;
                 }
                 else{
@@ -377,6 +381,7 @@ int main(){
                 cin>>input;
                 if(input=="yes"){
                     HP=hp*10;
+		    Critter2HP = HP+10;
                     Life=life;
                 }
                 else{
@@ -440,7 +445,7 @@ int main(){
     cin.ignore();
     while (true){
         int YourAtt=roll(0,AP-1);
-        cout<<"You played the skill:"<<Attack[YourAtt].attack_name<<endl;
+        cout<<"You played the skill: "<<Attack[YourAtt].attack_name<<endl;
         dragonHP-=Attack[YourAtt].attack_hurt;
         HP+=Attack[YourAtt].recover;
         if(dragonHP<=0&&dragonlife==2){
@@ -483,6 +488,7 @@ int main(){
                 cin>>input;
                 if(input=="yes"){
                     HP=hp*10;
+		    dragonHP=HP+20;
                     Life=life;
                 }
                else{
@@ -508,6 +514,7 @@ int main(){
                 cin>>input;
                 if(input=="yes"){
                     HP=hp*10;
+		    dragonHP=HP+20;
                     Life=life;
                 }
                else{
@@ -533,6 +540,7 @@ int main(){
                 cin>>input;
                 if(input=="yes"){
                     HP=hp*10;
+		    dragonHP=HP+20;
                     Life=life;
                 }
                else{
@@ -545,28 +553,37 @@ int main(){
 	}
 	if(DragonAtt==8){
             cout<<"The Dragon played the skill: "<<Dragon[3].attack_name<<endl;
-            HP-=Dragon[3].attack_hurt;
-            if(HP<=0&&Life==2){
-                cout<<"You died."<<endl;
-                cout<<"Fortunately, you have another chance. Now get up and keep fighting!"<<endl;
-                Life=Life-1;
-                HP=hp*10;
+	    if (Sheild == 1){
+                HP == HP;
+                cout << "Your shield is used to withstand a single damage from the Dragon's trump card." << endl;
+                Sheild = 0;
             }
-	    else if(HP<=0&&Life==1){
-                cout<<"Unfortunately, you've lost all your chance. Do you want to replay this round?(yes/no)"<<endl;
-                cout<<endl;
-                cin>>input;
-                if(input=="yes"){
-                    HP=hp*10;
-                    Life=life;
-                }
-               else{
-                    break;
-                }
-            }
+	    else{
+            	HP-=Dragon[3].attack_hurt;
+            	if(HP<=0&&Life==2){
+                	cout<<"You died."<<endl;
+                	cout<<"Fortunately, you have another chance. Now get up and keep fighting!"<<endl;
+                	Life=Life-1;
+                	HP=hp*10;
+            	}
+	    	else if(HP<=0&&Life==1){
+                	cout<<"Unfortunately, you've lost all your chance. Do you want to replay this round?(yes/no)"<<endl;
+                	cout<<endl;
+                	cin>>input;
+                	if(input=="yes"){
+                    		HP=hp*10;
+				dragonHP=HP+20;
+                    		Life=life;
+                	}
+               		else{
+                    		break;
+                	}
+           	 }
+	    }
             cout<<"Your HP is: "<<HP<<endl;
             cout << "Press Enter to continue the battle." << endl;
             cin.get();
+	    
 	}
 
     }
