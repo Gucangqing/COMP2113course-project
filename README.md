@@ -16,6 +16,13 @@ Works to be done:
 
 3. A list of features that you have implemented, and explain how each coding element 1 to 5 listed under the coding requirements aforementioned support your features.
 
+ Coding element:
+  1. Generation of random game sets or events: The player's skill points(HP & AP) and gift will be generated randomly, and the the skill that the player and his enemies play in the game will also be generated randomly.
+  2. Data structures for storing game status: The player's and NPC's attack skills are all stored in structs.
+  3. Dynamic memory management: 
+  4. File input/output (e.g., for loading/saving game status): The player's life and shield is saved at the beginning, and will be used during the game.
+  5. Program codes in multiple files: The main function and the self-defined functions are written in separated files. There is a function.h files saving the functions, and a function.cpp file defining the functions.
+  
   Features: 
   Our game will be a text-based adventure game. The player can tell his or her current situations through texts and make several actions to reach their final goal. This game will be a PvE game with player and NPC take turns to fight.
   
@@ -25,13 +32,6 @@ Works to be done:
   
   B. Game NPC's situation and actions generating
   Each Game NPC will have his or her own list of functions and attributes. For example during the fight with the player, we'll provide a list of actions the NPC can do and randomly generating actions from their list. 
-
-  Coding element:
-  1. Generation of random game sets or events: The player's skill points(HP & AP) and gift will be generated randomly, and the the skill that the player and his enemies play in the game will also be generated randomly.
-  2. Data structures for storing game status: The player's and NPC's attack skills are all stored in structs.
-  3. Dynamic memory management: 
-  4. File input/output (e.g., for loading/saving game status): The player's life and shield is saved at the beginning, and will be used during the game.
-  5. Program codes in multiple files: The main function and the self-defined functions are written in separated files. There is a function.h files saving the functions, and a function.cpp file defining the functions.
 
 4. A list of non-standard C/C++ libraries, if any, that are used in your work and integrated to your code repo. Please also indicate what features in your game are supported by these libraries.
 
