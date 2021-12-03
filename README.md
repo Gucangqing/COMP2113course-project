@@ -35,7 +35,7 @@ Works to be done:
 
 4. A list of non-standard C/C++ libraries, if any, that are used in your work and integrated to your code repo. Please also indicate what features in your game are supported by these libraries.
 
-  We didn't use any non-standard C/C++ lirary.
+  We didn't use any non-standard C/C++ library.
 
 5. Compilation and execution instructions. Simply put, this serves like a "Quick start" of your game.
 
