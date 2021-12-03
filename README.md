@@ -19,11 +19,11 @@ Works to be done:
   Features: 
   Our game will be a text-based adventure game. The player can tell his or her current situations through texts and make several actions to reach their final goal. This game will be a PvE game with player and NPC take turns to fight.
   
-  A.Player's situation and actions generating
+  A. Player's situation and actions generating
   The function will be able to calculate and store the current situations of the player. For example, for the HP of the player, every actions he made will possible affect his HP. Regarding different action commands, we'll call different calculation function to increase or decrease or do no change to the player's HP, and returned the new value to the main memory.
   The player will also be provided with a list of actions he could do when he call's out either the main menu or fighting menu and so on. Different action commands will lead to several funtions to achieve different goals.
   
-  B.Game NPC's situation and actions generating
+  B. Game NPC's situation and actions generating
   Each Game NPC will have his or her own list of functions and attributes. For example during the fight with the player, we'll provide a list of actions the NPC can do and randomly generating actions from their list. 
 
   Coding element:
@@ -32,6 +32,7 @@ Works to be done:
   3. Dynamic memory management: 
   4. File input/output (e.g., for loading/saving game status): The player's life and shield is saved at the beginning, and will be used during the game.
   5. Program codes in multiple files: The main function and the self-defined functions are written in separated files. There is a function.h files saving the functions, and a function.cpp file defining the functions.
+
 
 4. A list of non-standard C/C++ libraries, if any, that are used in your work and integrated to your code repo. Please also indicate what features in your game are supported by these libraries.
 
