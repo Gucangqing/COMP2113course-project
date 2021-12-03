@@ -33,8 +33,7 @@ Works to be done:
   4. File input/output (e.g., for loading/saving game status): The player's life and shield is saved at the beginning, and will be used during the game.
   5. Program codes in multiple files: The main function and the self-defined functions are written in separated files. There is a function.h files saving the functions, and a function.cpp file defining the functions.
 
-
-4. A list of non-standard C/C++ libraries, if any, that are used in your work and integrated to your code repo. Please also indicate what features in your game are supported by these libraries.
+5. A list of non-standard C/C++ libraries, if any, that are used in your work and integrated to your code repo. Please also indicate what features in your game are supported by these libraries.
 
   We didn't use any non-standard C/C++ lirary.
 
