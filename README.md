@@ -19,7 +19,7 @@ Works to be done:
  Coding element:
   1. Generation of random game sets or events: The player's skill points(HP & AP) and gift will be generated randomly, and the the skill that the player and his enemies play in the game will also be generated randomly.
   2. Data structures for storing game status: The player's and NPC's attack skills are all stored in structs.
-  3. Dynamic memory management: 
+  3. Dynamic memory management: Every time when the AP changes, the attack skills are added.
   4. File input/output (e.g., for loading/saving game status): The player's life and shield is saved at the beginning, and will be used during the game.
   5. Program codes in multiple files: The main function and the self-defined functions are written in separated files. There is a function.h files saving the functions, and a function.cpp file defining the functions.
   
