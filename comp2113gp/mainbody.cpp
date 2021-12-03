@@ -22,10 +22,10 @@ int main(){
     string name;
     int hp,HP, AP, Sheild=0, life=1;
     bool C1=false,C2=false,D=false;
-    attackskills Attack[8];
+    attackskills Attack[10];
     
     //skills of Protagonist
-    attackskills Protagonist[9]={
+    attackskills Protagonist[10]={
         {"Smite", 10, 0},
         {"Stone", 12, 0},
         {"Strike", 14, 0},
@@ -34,7 +34,8 @@ int main(){
         {"Knife", 20, 5},
         {"Sword", 22, 10},
         {"Shot", 30, 20},
-        {"Bomb", 40, 30}
+        {"Bomb", 40, 30},
+        {"Recover",0,60}
     };
     //skills of Antagonists
     Critter Critter1[2]={
@@ -457,7 +458,7 @@ int main(){
             cout<<"It recovered!"<<endl;
             cin.get();
             cout<<"Come on young man, you've beaten the dragon once and you can do it again!"<<endl;
-            dragonHP=HP+20;
+            dragonHP=20;
             dragonlife-=1;
         }
         else if(dragonHP<=0&&dragonlife==1){
@@ -514,7 +515,7 @@ int main(){
                 cin>>input;
                 if(input=="yes"){
                     HP=hp*10;
-		    dragonHP=HP+20;
+		            dragonHP=HP+20;
                     Life=life;
                 }
                else{
@@ -587,6 +588,56 @@ int main(){
 	}
 
     }
+    if(D==true){
+        cout<<"Press Enter to continue."<<endl;
+        cin.get();
+        int trials=2;
+        string ans;
+        cout<<"After beaten the dragon, you brought back countless treasure and princess Cici."<<endl;
+        cout<<"The whole contry is full of joy."<<endl;
+        cout<<"But the elegant princess won't merry you unless you could answer her wise question."<<endl;
+        cout<<"This is your last challenge, are you ready?(yes/no)"<<endl;
+        cin>>input;
+        if (input=="yes"){
+            cout<<"The question is:"<<endl;
+            cout<<"What is ice which gives you fire and which your fire freezes still more?"<<endl;
+            cout<<endl;
+            cout<<"Please input the answer in lower case letter. You have three trials."<<endl;
+            cin>>input;
+            while(true){
+                if(input!="cici"&&trials==2){
+                    cout<<"Incorrect answer,you have "<<trials<<" chances left."<<endl;
+                    cout<<"Hint: the princess loves the story of Turandot."<<endl;
+                    cout<<"Please input your answer in lower case letter."<<endl;
+                    cin>>input;
+                    trials-=1;
+                }
+                else if (input!="cici"&&trials==1){
+                    cout<<"Incorrect answer,you have "<<trials<<" chances left."<<endl;
+                    cout<<"Hint: it's a name."<<endl;
+                    cout<<"Please input your answer in lower case letter."<<endl;
+                    cin>>input;
+                    trials-=1;
+                }
+                else if(trials==0){
+                    cout<<"Sorry, you've used up your chances. The King passed his kingdom to you. But the princess decided to move away."<<endl;
+                    break;
+                }
+                
+                else if(input=="cici"){
+                    cout<<"You've proved that you are not only brave but also clever."<<endl;
+                    cout<<"The king kept his promise."<<endl;
+                    cout<<"Now you are the new king of the magic kingdom."<<endl;
+                    cout<<"You lived a long and happy life with the princess."<<endl;
+                    break;
+                }
+                
+                
+            }
+        }
+    }
+    cout<<endl;
+    cout<<"Game is end. Thanks for your playing."<<endl;
 }
 
 
