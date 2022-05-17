@@ -6,7 +6,6 @@ Works to be done:
 1. Identification of the team members.
 
   Zhang Yuhan (3035771672)
-  Chen Jingyan (3035827940)
 
 2. An improved description of your game and introduce the game rules.
 
